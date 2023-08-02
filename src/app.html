@@ -16,9 +16,7 @@
 		/>
 		<meta name="application-name" content="Talk" />
 		<!-- Meta data for link fetching -->
-		<meta property="og:url" content="https://tlk.li" />
-		<meta property="og:image" content="https://tlk.li/og-image.png" />
-		<meta property="og:title" content="Talk - Free video calling for the web" />
+		<meta property="og:title" content="视频面试" />
 		<meta
 			property="og:description"
 			content="A free, peer-to-peer, encrypted, open-source video calling for the web. No sign ups. No downloads."
@@ -32,7 +30,7 @@
 		<script defer src="/vue.global.prod.js"></script>
 		<script defer src="app.js"></script>
 		<script defer src="webrtc.js"></script>
-		<title>Talk - Free video calling for the web</title>
+		<title>视频面试</title>
 		<!-- ANALYTICS_SCRIPT -->
 	</head>
 
@@ -42,24 +40,12 @@
 		<main id="app">
 			<div id="appWrap" v-bind:style="'display:block;'">
 				<div id="intro" v-if="!callInitiated && !showChat && !showSettings">
-					<h3>You are about to enter a video call.</h3>
-					<p>Talk is a free, peer-to-peer, encrypted, open-source video calling for the web.</p>
+					<h3>您即将进入视频通话.</h3>
 					<p>
-						<label v-bind:class="(nameError && !name ? 'red' : '')">Please enter your name</label>
+						<label v-bind:class="(nameError && !name ? 'red' : '')">请输入您的姓名</label>
 						<input type="text" v-model="name" v-on:keyup="updateName" placeholder="Your name" />
 					</p>
 					<br />
-
-					<div class="footer">
-						<iframe
-							src="https://ghbtns.com/github-btn.html?user=vasanthv&repo=talk&type=star&count=true&size=large"
-							frameborder="0"
-							scrolling="0"
-							width="170"
-							height="30"
-							title="GitHub"
-						></iframe>
-
 						<button v-on:click="initiateCall">Proceed</button>
 					</div>
 				</div>
@@ -132,19 +118,14 @@
 					</div>
 					<hr class="separator" />
 
-					<div class="link" v-on:click="copyURL">{{copyText || "Copy room link"}}</div>
-					<hr class="separator" />
-					<div class="link" v-on:click="toggleSelfVideoMirror">
-						Mirror / Unmirror
-						<small class="light">(self-view)</small>
-					</div>
+					<div class="link" v-on:click="copyURL">{{copyText || "复制房间链接"}}</div>
 				</div>
 
 				<div id="actionsWrap" v-bind:class="hideToolbar ? 'hidden' : ''" v-if="callInitiated">
 					<div id="actions">
 						<button v-bind:class="'icon-mic'+(audioEnabled ? '' : '-off')" v-on:click="audioToggle"></button>
 						<button v-bind:class="'icon-video'+(videoEnabled ? '' : '-off')" v-on:click="videoToggle"></button>
-						<button
+						<!-- <button
 							v-bind:class="'icon-message-square '+(showChat ? 'active' : '')"
 							v-on:click="showChat = !showChat"
 						></button>
@@ -152,7 +133,7 @@
 							v-if="!isMobileDevice"
 							v-bind:class="'icon-monitor '+(screenShareEnabled ? 'active' : '')"
 							v-on:click="screenShareToggle"
-						></button>
+						></button> -->
 						<button v-bind:class="'icon-exit'" v-on:click="exit"></button>
 						<button
 							v-bind:class="'icon-more-horizontal '+(showSettings ? 'active' : '')"

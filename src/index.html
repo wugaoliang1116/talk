@@ -37,33 +37,15 @@
 	<body>
 		<main class="wrap">
 			<div id="app" class="row">
-				<h1 class="flex"><img src="favicon.svg" id="logo" /> Talk</h1>
-				<h2>A free, peer-to-peer, open-source video calling for the web.</h2>
-				<h3>No sign ups. No downloads.<br />Works in all major browsers.</h3>
+				<h3>开始视频面试</h3>
 				<div class="flex">
 					<div id="roomurl">
-						<span>tlk.li/</span><input type="text" placeholder="room-name" pattern="[a-zA-Z0-9]{8}" v-model="roomId" />
+						<span>https://axhub.baidu.com/camera/</span><input type="text" placeholder="room-name" pattern="[a-zA-Z0-9]{8}" v-model="roomId" />
 					</div>
 					<a v-bind:href="'/'+roomId" class="button">Start</a>
 				</div>
 
 				<p><a href="javascript:void(0)" v-on:click="generateRandomRoomId">Generate a random room</a></p>
-			</div>
-			<div class="spacer"></div>
-			<div class="row">
-				<iframe
-					src="https://ghbtns.com/github-btn.html?user=vasanthv&repo=talk&type=star&count=true&size=large"
-					frameborder="0"
-					scrolling="0"
-					width="170"
-					height="30"
-					title="GitHub"
-				></iframe>
-			</div>
-
-			<div class="row small light">
-				&copy; tlk.li &middot; <a href="/legal">Legal</a> &middot;
-				<a href="mailto:vasanth@tlk.li" target="_blank">Contact</a>
 			</div>
 
 			<br /><br />

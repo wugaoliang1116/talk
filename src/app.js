@@ -296,4 +296,18 @@ const App = Vue.createApp({
 			this.callEnded = true;
 		},
 	},
+	mounted() {
+		const url = new URL(window.location.href);
+		const searchParams = new URLSearchParams(url.search);
+		const candidateName = searchParams.get('candidateName');
+		window.localStorage.name = candidateName;
+		console.log('candidateName', candidateName);
+		this.name = candidateName;
+		setTimeout(() => {
+			if(this.name){
+				this.callInitiated = true;
+				window.initiateCall();
+			}
+		}, 1000)
+	}
 }).mount("#app");

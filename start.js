@@ -10,10 +10,10 @@ const io = require("socket.io")(server, {
 const signallingServer = require("./server/signalling-server.js");
 
 // Get PORT from env variable else assign 3000 for development
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // Server all the static files from www folder
-app.use(express.static(path.join(__dirname, "www")));
+app.use(express.static(path.join(__dirname, "src")));
 app.use(express.static(path.join(__dirname, "icons")));
 app.use(express.static(path.join(__dirname, "assets")));
 app.use(express.static(path.join(__dirname, "node_modules/vue/dist/")));
@@ -24,12 +24,10 @@ server.listen(PORT, null, () => {
 });
 
 // serve the landing page
-app.get("/", (req, res) => res.sendFile(path.join(__dirname, "www/index.html")));
+app.get("/", (req, res) => res.sendFile(path.join(__dirname, "src/index.html")));
 
-// serve the terms / legal page
-app.get("/legal", (req, res) => res.sendFile(path.join(__dirname, "www/legal.html")));
 
 // All other URL patterns will serve the app.
-app.get("/:room", (req, res) => res.sendFile(path.join(__dirname, "www/app.html")));
+app.get("/:room", (req, res) => res.sendFile(path.join(__dirname, "src/app.html")));
 
 io.sockets.on("connection", signallingServer);
